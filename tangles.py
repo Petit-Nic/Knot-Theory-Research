@@ -1,4 +1,5 @@
 import matplotlib
+import matplotlib.pyplot as plt
 
 
 def findItem(theList, item):
@@ -590,11 +591,11 @@ class Tangle:
     def draw(self):
         totalStrands = list(zip([sum(item) for item in self.topEndp], [sum(item) for item in self.botEndp]))
         maxLength = max(max(item[0] for item in totalStrands), max(item[1] for item in totalStrands))
-        fig, ax = matplotlib.pyplot.subplots(1, 1, figsize=(maxLength+1, self.levels+1))
+        fig, ax = plt.subplots(1, 1, figsize=(maxLength+1, self.levels+1))
         ax.axes.get_xaxis().set_visible(False)
         ax.axes.get_yaxis().set_visible(False)
-        matplotlib.pyplot.xlim(-0.5, maxLength)
-        matplotlib.pyplot.ylim(-self.levels-1.5, -0.5)
+        plt.xlim(-0.5, maxLength)
+        plt.ylim(-self.levels-1.5, -0.5)
         for i in range(self.levels+2):
             ax.plot([j for j in range(-1, maxLength+1)], [-i for j in range(-1, maxLength+1)],
                     color='k')
@@ -656,97 +657,97 @@ class Tangle:
                         case 'Bl':
                             endpointIndex += 1
                         case 'Up':
-                            arrow = matplotlib.pyplot.arrow(endpointIndex, -levelIndex-1, 0, 1, color= 'k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow = plt.arrow(endpointIndex, -levelIndex-1, 0, 1, color= 'k', length_includes_head=True, head_width=0.2, head_length=0.2)
                             ax.add_patch(arrow)
                             endpointIndex += 1
                         case 'Do':
-                            arrow = matplotlib.pyplot.arrow(endpointIndex, -levelIndex, 0, -1, color= 'k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow = plt.arrow(endpointIndex, -levelIndex, 0, -1, color= 'k', length_includes_head=True, head_width=0.2, head_length=0.2)
                             ax.add_patch(arrow)
                             endpointIndex += 1
                         case 'UO':
-                            arrow1 = matplotlib.pyplot.arrow(endpointIndex, -levelIndex-1, 1, 1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
-                            arrow2 = matplotlib.pyplot.arrow(endpointIndex+1, -levelIndex-1, -1, 1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow1 = plt.arrow(endpointIndex, -levelIndex-1, 1, 1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow2 = plt.arrow(endpointIndex+1, -levelIndex-1, -1, 1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
                             circle = matplotlib.patches.Circle((endpointIndex+0.5, -levelIndex-0.5), 0.2, color='k', fill=False)
                             ax.add_patch(circle)
                             ax.add_patch(arrow2)
                             ax.add_patch(arrow1)
                             endpointIndex += 2
                         case "DO":
-                            arrow1 = matplotlib.pyplot.arrow(endpointIndex, -levelIndex, 1, -1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
-                            arrow2 = matplotlib.pyplot.arrow(endpointIndex+1, -levelIndex, -1, -1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow1 = plt.arrow(endpointIndex, -levelIndex, 1, -1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow2 = plt.arrow(endpointIndex+1, -levelIndex, -1, -1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
                             circle = matplotlib.patches.Circle((endpointIndex+0.5, -levelIndex-0.5), 0.2, color='k', fill=False)
                             ax.add_patch(circle)
                             ax.add_patch(arrow2)
                             ax.add_patch(arrow1)
                             endpointIndex += 2
                         case "RO":
-                            arrow1 = matplotlib.pyplot.arrow(endpointIndex, -levelIndex, 1, -1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
-                            arrow2 = matplotlib.pyplot.arrow(endpointIndex, -levelIndex-1, 1, 1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow1 = plt.arrow(endpointIndex, -levelIndex, 1, -1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow2 = plt.arrow(endpointIndex, -levelIndex-1, 1, 1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
                             circle = matplotlib.patches.Circle((endpointIndex+0.5, -levelIndex-0.5), 0.2, color='k', fill=False)
                             ax.add_patch(circle)
                             ax.add_patch(arrow2)
                             ax.add_patch(arrow1)
                             endpointIndex += 2
                         case "LO":
-                            arrow1 = matplotlib.pyplot.arrow(endpointIndex+1, -levelIndex, -1, -1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
-                            arrow2 = matplotlib.pyplot.arrow(endpointIndex+1, -levelIndex-1, -1, 1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow1 = plt.arrow(endpointIndex+1, -levelIndex, -1, -1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow2 = plt.arrow(endpointIndex+1, -levelIndex-1, -1, 1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
                             circle = matplotlib.patches.Circle((endpointIndex+0.5, -levelIndex-0.5), 0.2, color='k', fill=False)
                             ax.add_patch(circle)
                             ax.add_patch(arrow2)
                             ax.add_patch(arrow1)
                             endpointIndex += 2
                         case 'U+':
-                            arrow1 = matplotlib.pyplot.arrow(endpointIndex, -levelIndex-1, 1, 1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
-                            arrow2 = matplotlib.pyplot.arrow(endpointIndex+0.3, -levelIndex-0.3, -0.3, 0.3, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow1 = plt.arrow(endpointIndex, -levelIndex-1, 1, 1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow2 = plt.arrow(endpointIndex+0.3, -levelIndex-0.3, -0.3, 0.3, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
                             ax.plot([endpointIndex +1, endpointIndex + 0.7], [-levelIndex-1, -levelIndex-0.7], color='k')
                             ax.add_patch(arrow2)
                             ax.add_patch(arrow1)
                             endpointIndex += 2
                         case 'D+':
-                            arrow1 = matplotlib.pyplot.arrow(endpointIndex+1, -levelIndex, -1, -1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
-                            arrow2 = matplotlib.pyplot.arrow(endpointIndex+0.7, -levelIndex-0.7, 0.3, -0.3, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow1 = plt.arrow(endpointIndex+1, -levelIndex, -1, -1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow2 = plt.arrow(endpointIndex+0.7, -levelIndex-0.7, 0.3, -0.3, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
                             ax.plot([endpointIndex, endpointIndex+0.3], [-levelIndex, -levelIndex-0.3], color='k')
                             ax.add_patch(arrow2)
                             ax.add_patch(arrow1)
                             endpointIndex += 2
                         case 'R+':
-                            arrow1 = matplotlib.pyplot.arrow(endpointIndex, -levelIndex, +1, -1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
-                            arrow2 = matplotlib.pyplot.arrow(endpointIndex+0.7, -levelIndex-0.3, 0.3, 0.3, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow1 = plt.arrow(endpointIndex, -levelIndex, +1, -1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow2 = plt.arrow(endpointIndex+0.7, -levelIndex-0.3, 0.3, 0.3, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
                             ax.plot([endpointIndex, endpointIndex+0.3], [-levelIndex-1, -levelIndex-0.7], color='k')
                             ax.add_patch(arrow2)
                             ax.add_patch(arrow1)
                             endpointIndex += 2
                         case 'L+':
-                            arrow1 = matplotlib.pyplot.arrow(endpointIndex+1, -levelIndex-1, -1, 1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
-                            arrow2 = matplotlib.pyplot.arrow(endpointIndex+0.3, -levelIndex-0.7, -0.3, -0.3, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow1 = plt.arrow(endpointIndex+1, -levelIndex-1, -1, 1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow2 = plt.arrow(endpointIndex+0.3, -levelIndex-0.7, -0.3, -0.3, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
                             ax.plot([endpointIndex+0.7, endpointIndex+1], [-levelIndex-0.3, -levelIndex], color='k')
                             ax.add_patch(arrow2)
                             ax.add_patch(arrow1)
                             endpointIndex += 2
                         case 'U-':
-                            arrow1 = matplotlib.pyplot.arrow(endpointIndex+1, -levelIndex-1, -1, 1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
-                            arrow2 = matplotlib.pyplot.arrow(endpointIndex+0.7, -levelIndex-0.3, 0.3, 0.3, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow1 = plt.arrow(endpointIndex+1, -levelIndex-1, -1, 1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow2 = plt.arrow(endpointIndex+0.7, -levelIndex-0.3, 0.3, 0.3, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
                             ax.plot([endpointIndex, endpointIndex + 0.3], [-levelIndex-1, -levelIndex-0.7], color='k')
                             ax.add_patch(arrow2)
                             ax.add_patch(arrow1)
                             endpointIndex += 2
                         case 'D-':
-                            arrow1 = matplotlib.pyplot.arrow(endpointIndex, -levelIndex, 1, -1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
-                            arrow2 = matplotlib.pyplot.arrow(endpointIndex+0.3, -levelIndex-0.7, -0.3, -0.3, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow1 = plt.arrow(endpointIndex, -levelIndex, 1, -1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow2 = plt.arrow(endpointIndex+0.3, -levelIndex-0.7, -0.3, -0.3, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
                             ax.plot([endpointIndex+0.7, endpointIndex + 1], [-levelIndex-0.3, -levelIndex], color='k')
                             ax.add_patch(arrow2)
                             ax.add_patch(arrow1)
                             endpointIndex += 2
                         case 'R-':
-                            arrow1 = matplotlib.pyplot.arrow(endpointIndex, -levelIndex-1, 1, 1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
-                            arrow2 = matplotlib.pyplot.arrow(endpointIndex+0.7, -levelIndex-0.7, 0.3, -0.3, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow1 = plt.arrow(endpointIndex, -levelIndex-1, 1, 1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow2 = plt.arrow(endpointIndex+0.7, -levelIndex-0.7, 0.3, -0.3, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
                             ax.plot([endpointIndex, endpointIndex + 0.3], [-levelIndex, -levelIndex-0.3], color='k')
                             ax.add_patch(arrow2)
                             ax.add_patch(arrow1)
                             endpointIndex += 2
                         case 'L-':
-                            arrow1 = matplotlib.pyplot.arrow(endpointIndex+1, -levelIndex, -1, -1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
-                            arrow2 = matplotlib.pyplot.arrow(endpointIndex+0.3, -levelIndex-0.3, -0.3, 0.3, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow1 = plt.arrow(endpointIndex+1, -levelIndex, -1, -1, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                            arrow2 = plt.arrow(endpointIndex+0.3, -levelIndex-0.3, -0.3, 0.3, color='k', length_includes_head=True, head_width=0.2, head_length=0.2)
                             ax.plot([endpointIndex+0.7, endpointIndex + 1], [-levelIndex-0.7, -levelIndex-1], color='k')
                             ax.add_patch(arrow2)
                             ax.add_patch(arrow1)
@@ -775,32 +776,31 @@ class Tangle:
                             if bit[0].isdigit():
                                 n = int(bit[0])
                                 if bit[1] == 'U':
-                                    arrow = matplotlib.pyplot.arrow(endpointIndex, -levelIndex-1, n, 1, color= 'k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                                    arrow = plt.arrow(endpointIndex, -levelIndex-1, n, 1, color= 'k', length_includes_head=True, head_width=0.2, head_length=0.2)
                                     ax.add_patch(arrow)
                                 else:
-                                    arrow = matplotlib.pyplot.arrow(endpointIndex, -levelIndex, n, -1, color= 'k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                                    arrow = plt.arrow(endpointIndex, -levelIndex, n, -1, color= 'k', length_includes_head=True, head_width=0.2, head_length=0.2)
                                     ax.add_patch(arrow)
                                 endpointIndex += n+1
                             else: 
                                 n = int(bit[1])
                                 if bit[0] == 'U':
-                                    arrow = matplotlib.pyplot.arrow(endpointIndex+n, -levelIndex-1, -n, 1, color= 'k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                                    arrow = plt.arrow(endpointIndex+n, -levelIndex-1, -n, 1, color= 'k', length_includes_head=True, head_width=0.2, head_length=0.2)
                                     ax.add_patch(arrow)
                                 else:
-                                    arrow = matplotlib.pyplot.arrow(endpointIndex+n, -levelIndex, -n, -1, color= 'k', length_includes_head=True, head_width=0.2, head_length=0.2)
+                                    arrow = plt.arrow(endpointIndex+n, -levelIndex, -n, -1, color= 'k', length_includes_head=True, head_width=0.2, head_length=0.2)
                                     ax.add_patch(arrow)
                                 endpointIndex += n+1
 
 
-        matplotlib.pyplot.show(block=False)
-        matplotlib.pyplot.waitforbuttonpress(0)
-        matplotlib.pyplot.close()
+        plt.show(block=False)
+        plt.waitforbuttonpress(0)
+        plt.close()
 
  
  
 ##Testing area
        
-
 #code = ['LdRd', 'DoU-Do', 'ROLu', 'Lu']
 #tangle = Tangle(code)
 #tangle.draw()
